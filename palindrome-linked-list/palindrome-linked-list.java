@@ -15,12 +15,6 @@ class Solution {
         ListNode mid = getMid(head);
         ListNode temp = head;
         ListNode tail = reverse(mid);
-        int len=0;
-        while(temp!=null)
-        {
-            temp = temp.next;
-            len++;
-        }
         while(tail!=null)
         {
             if(head.val!=tail.val)
