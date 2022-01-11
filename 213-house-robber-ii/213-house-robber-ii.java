@@ -4,11 +4,11 @@ class Solution {
             return nums[0];
         if(nums.length==2)
             return nums[0]>nums[1]?nums[0]:nums[1];
-        if(nums.length==3)
-        {
-            int m = Math.max(nums[0],nums[1]);
-            return (int)Math.max(m,nums[2]);
-        }
+        // if(nums.length==3)
+        // {
+        //     int m = Math.max(nums[0],nums[1]);
+        //     return (int)Math.max(m,nums[2]);
+        // }
         int temp1 =helper(nums,0);
         int temp2 =helper(nums,1);
         return (int)Math.max(temp1,temp2);
