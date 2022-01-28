@@ -4,7 +4,7 @@ class Solution {
         for(int a:nums)
             if(a==1)
                 ones++;
-        for(i=0;i<2*n;i++)
+        for(i=0;i<n+ones;i++)
         {
             if(i>=ones && nums[(i-ones)%n]==1) x--;
             if(nums[i%n]==1)
