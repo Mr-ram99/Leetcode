@@ -15,7 +15,7 @@ class Solution {
         }
         
         while(!st.isEmpty()) st.pop();
-        
+        int max=0;
         for(int i=n-1;i>=0;i--)
         {
             while(!st.isEmpty() && heights[st.peek()]>=heights[i])
@@ -23,12 +23,10 @@ class Solution {
             if(st.isEmpty()) rightsmaller[i]=n-1;
             else rightsmaller[i] = st.peek() - 1;
             st.push(i);
-        }
-        int max=0;
-        for(int i=0;i<n;i++)
-        {
+            
             max= Math.max(max,heights[i]*(rightsmaller[i]-leftsmaller[i]+1));
         }
+        
         return max;
 //         brute force
         // int i, j, maxarea=0, max=heights[0],count;
