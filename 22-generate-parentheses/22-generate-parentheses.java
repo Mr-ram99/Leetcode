@@ -22,29 +22,6 @@ class Solution {
             generate(s+")", list, co, cc+1, max);
         }
     }
-    public static boolean isValid(String s)
-    {
-        Stack<Integer> stk = new Stack<>();
-        int n = s.length();
-        int i=0;
-        while(i<n)
-        {
-            if(s.charAt(i)=='(')
-                stk.push(0);
-            else
-            {
-                if(stk.isEmpty())
-                    return false;
-                if(stk.peek()!=0)
-                    return false;
-                stk.pop();
-            }
-            i++;
-        }
-        if(!stk.isEmpty())
-            return false;
-        return true;
-    }
 }
 
 
