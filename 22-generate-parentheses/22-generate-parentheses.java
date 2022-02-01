@@ -2,25 +2,24 @@ class Solution {
     public List<String> generateParenthesis(int n) {
         String s ="";
         List<String> list = new ArrayList<>();
-        int co = n, cc = n;
-        generate(s, list, co, cc);
+        int co = 0, cc = 0, max=n;
+        generate(s, list, co, cc, max);
         return list;
     }
-    public static void generate(String s, List<String> list, int co, int cc)
+    public static void generate(String s, List<String> list, int co, int cc, int max)
     {
-        if(co==0 && cc==0)
+        if(s.length()==max*2)
         {
-            if(isValid(s))
                 list.add(s);
             return ;
         }
-        if(co>0)
+        if(co<max)
         {
-            generate(s+"(", list, co-1, cc);
+            generate(s+"(", list, co+1, cc, max);
         }
-        if(cc>0)
+        if(cc<co)
         {
-            generate(s+")", list, co, cc-1);
+            generate(s+")", list, co, cc+1, max);
         }
     }
     public static boolean isValid(String s)
