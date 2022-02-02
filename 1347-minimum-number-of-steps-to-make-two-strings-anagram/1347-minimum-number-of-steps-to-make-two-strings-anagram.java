@@ -27,6 +27,6 @@ class Solution {
                 sum += val1-val2;
             }
         }
-        return Math.abs(sum);
+        return sum;
     }
 }
