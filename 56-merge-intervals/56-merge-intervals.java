@@ -10,7 +10,7 @@ class Solution {
         {
             a2 = intervals[i][0];
             b2 = intervals[i][1];
-            if((a2>=a1 && a2<=b1) || (b2>=a1 && b2<=b1) || (a2<a1 && b2>b1))
+            if((a2>=a1 && a2<=b1))
             {
                     a1 = Math.min(a1,a2);
                     b1 = Math.max(b1,b2);
