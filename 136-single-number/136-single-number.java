@@ -1,12 +1,9 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int i=1;
-        int ans = nums[0];
-        while(i<nums.length)
-        {
-            ans = ans^nums[i];
-            i++;
-        }
-        return ans;
+        int res = 0;
+        for(int i=0;i<nums.length;i++)
+            res ^= nums[i];
+        return res;
     }
+    
 }
