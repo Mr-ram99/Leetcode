@@ -1,23 +1,33 @@
 class Solution {
-    public int[] topKFrequent(int[] nums, int k) {
-        HashMap<Integer,Integer> map = new HashMap<>();
-        
-        for(int i=0;i<nums.length;i++){
-            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
+        public int[] topKFrequent(int[] nums, int k) {
+
+        List<Integer>[] bucket = new List[nums.length + 1];
+        Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
+
+        for (int n : nums) {
+            frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
         }
-        List<Map.Entry<Integer, Integer> > list = new LinkedList<>(map.entrySet());
- 
-        Collections.sort(list,(i1,i2) -> i2.getValue().compareTo(i1.getValue()));
- 
-        HashMap<Integer, Integer> temp = new HashMap<Integer, Integer>();
-        int [] res =new int[k];
-        int i=0;
-        for (Map.Entry<Integer, Integer> a: list) {
-            res[i] = a.getKey();
-            i++;
-            if(i==k)
-                break;
+
+        for (int key : frequencyMap.keySet()) {
+            int frequency = frequencyMap.get(key);
+            if (bucket[frequency] == null) {
+                bucket[frequency] = new ArrayList<>();
+            }
+            bucket[frequency].add(key);
         }
-        return res;
-    }
+
+        List<Integer> res = new ArrayList<>();
+
+        for (int pos = bucket.length - 1; pos >= 0 && res.size() < k; pos--) {
+            if (bucket[pos] != null) {
+                res.addAll(bucket[pos]);
+            }
+        }
+            int []ans = new int[k];
+            for(int i=0;i<k;i++){
+                ans[i] = res.get(i);
+            }
+        return ans;
+  }
+       
 }
