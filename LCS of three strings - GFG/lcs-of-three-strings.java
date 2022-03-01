@@ -25,12 +25,9 @@ class GFG{
 //User function Template for Java
 class Solution 
 { 
-    int LCSof3(String A, String B, String C, int n1, int n2, int n3) 
+    int LCSof3(String a, String b, String c, int n1, int n2, int n3) 
     { 
         // code here
-        return lcs(A,B,C,n1,n2,n3);
-    }
-    int lcs(String a, String b, String c, int n1, int n2, int n3){
         int [][][] dp = new int[n1+1][n2+1][n3+1];
         for(int i=n1;i>=0;i--){
             for(int j=n2;j>=0;j--){
@@ -51,4 +48,5 @@ class Solution
         }
         return dp[0][0][0];
     }
+        
 } 
