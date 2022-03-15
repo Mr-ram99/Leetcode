@@ -1,37 +1,44 @@
 class Solution {
     public String minRemoveToMakeValid(String s) {
-        char [] ch = s.toCharArray();
         Stack<Character> stk = new Stack<>();
-        int i=0;
-        while(i<ch.length){
-            char c = ch[i];
-            switch(c){
-                case '(':   stk.push('(');break;
-                case ')':   if(stk.isEmpty())
-                            ch[i]='0';
-                            else 
-                                stk.pop();
-                            break;
+        int i=0, n=s.length();
+        int count=0;
+        while(i<n){
+            char ch = s.charAt(i);
+            if(ch=='('){
+                count++;
+                stk.push(ch);
+            }
+            else if(ch==')'){
+                count--;
+                if(count>=0)
+                    stk.push(ch);
+                else
+                    count++;
+            }
+            else{
+                stk.push(ch);
             }
             i++;
         }
-        if(!stk.isEmpty())
-        {
-            int l = stk.size();
-            int m=0;
-            for(i=ch.length-1;i>=0 && m<l;i--){
-                if(ch[i]=='(')
-                {
-                    ch[i]='0';
-                    m++;
+        StringBuilder sb = new StringBuilder();
+        if(count>0){
+            while(count>0 && !stk.isEmpty()){
+            char ch = stk.pop();
+            if(ch!='(')
+                sb.append(ch);
+            else
+                count--;
+            }
+            while(!stk.isEmpty()){
+                sb.append(stk.pop());
             }
         }
+        else{
+            while(!stk.isEmpty()){
+                sb.append(stk.pop());
+            }
         }
-         StringBuilder sb = new StringBuilder();   
-        for(i=0;i<ch.length;i++){
-            if(ch[i]!='0')
-                sb.append(ch[i]);
-        }
-        return sb.toString();
+        return sb.reverse().toString();
     }
 }
